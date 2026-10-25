@@ -11,7 +11,7 @@ All notable changes to this project are recorded here. The format follows
   3-step quick start with prerequisites, a supported and tested table,
   `docs/setup.md`, `docs/faq.md`, `docs/how-it-works.md`, `llms.txt`, a hardware
   report issue template, a `Makefile` with `make check`, and a 1280x640 social
-  preview drawn by `tools/gen_social.py`.
+  preview drawn by `tools/brand/brand_kit.py` (`make social`).
 - **Firmware.** ESPHome config built on SendspinZero Speaker, pinned to
   `0c7f82b`, with an encrypted API, OTA that requires the API key, Wi-Fi from
   `secrets.yaml`, and the KALLSUP's second button on `GPIO1` as play/pause,
@@ -22,8 +22,8 @@ All notable changes to this project are recorded here. The format follows
 - **Board notes.** The KALLSUP E2507 teardown: parts, test pads, the ANT8817S
   datasheet summary and pin findings, each marked measured, inferred or open.
 - **Diagrams and brand.** Architecture and wiring diagrams in light and dark,
-  drawn by `tools/gen_diagram.py`; the icon, a flat vector speaker with Wi-Fi
-  arcs, drawn by `tools/gen_brand.py`.
+  drawn by `tools/gen_diagram.py`; the icon, a speaker glyph on a single-hue tile,
+  drawn by `tools/brand/brand_kit.py` and checked by `tools/brand/check-icon.sh`.
 - **CI.** ESPHome config validation and a diagram freshness check.
 - **Board notes: continuity log and more parts.** The unpowered continuity
   tests behind the measured findings, the rest of the identified parts (X1,

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="brand/icon.svg" alt="KALLSUP Sendspin" width="104" height="104">
+<img src="docs/assets/brand/icon.svg" alt="KALLSUP Sendspin icon: a speaker with a tweeter dot above a round woofer, white on an indigo tile" width="104" height="104">
 
 # 🔊 KALLSUP Sendspin for Music Assistant
 
@@ -155,15 +155,13 @@ Kallsup-Sendspin-MusicAssistant/
 │   ├── kallsup-sendspin.yaml   # 📟 ESPHome config: SendspinZero Speaker + KALLSUP button
 │   └── secrets.yaml.example
 ├── docs/                       # 📚 setup, FAQ, build guide, wiring, board notes (index: docs/README.md)
-│   ├── assets/                 # 🖼️ diagrams, mockups, teardown photos, social-preview.png
+│   ├── assets/                 # 🖼️ diagrams, mockups, teardown photos, brand/ icon, social-preview.png
 │   └── archive/                # 🗄️ dated records, such as the design review
-├── brand/                      # 🎨 icon.svg, drawn by tools/gen_brand.py
 ├── tools/
 │   ├── gen_diagram.py          # 🤖 draws docs/assets diagrams; --check in CI
 │   ├── gen_mockups.py          # 🧩 build mockups: bench, inside the KALLSUP, soldering; --check in CI
 │   ├── annotate_photos.py      # 🏷️ rings and labels on copies of the photos
-│   ├── gen_brand.py            # 🎨 draws brand/icon.svg; --check in CI
-│   └── gen_social.py           # 🖼️ draws docs/assets/social-preview.png
+│   └── brand/                  # 🎨 vendored brand kit: draws the icon (check-icon.sh in CI) and the social preview
 ├── .github/
 │   ├── workflows/ci.yml        # ✅ ESPHome config validates, diagrams and mockups up to date
 │   ├── ISSUE_TEMPLATE/         # 🐛 bug report, feature request, hardware report
@@ -214,7 +212,7 @@ sed -i.bak "s|CHANGE_ME_KEY|$(openssl rand -base64 32)|" firmware/secrets.yaml &
 esphome config firmware/kallsup-sendspin.yaml   # validates, including the remote package
 python3 tools/gen_diagram.py --check            # diagrams match the generator
 python3 tools/gen_mockups.py --check            # build mockups match theirs
-python3 tools/gen_brand.py --check              # and the icon
+sh tools/brand/check-icon.sh                    # and the icon
 ```
 
 `make check` runs the same checks. CI runs all four on pushes to `main`, on pull requests and weekly. They prove the config is valid and the pictures are current; they cannot prove the wiring, which is why the build guide starts with a bench test.

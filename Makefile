@@ -11,7 +11,7 @@ firmware: ## Validate the ESPHome config with a throwaway secrets file (needs es
 diagrams: ## The generated pictures match their generators
 	python3 tools/gen_diagram.py --check
 	python3 tools/gen_mockups.py --check
-	python3 tools/gen_brand.py --check
+	sh tools/brand/check-icon.sh
 
-social: ## Redraw docs/assets/social-preview.png (needs pillow)
-	python3 tools/gen_social.py
+social: ## Redraw docs/assets/social-preview.png (needs Google Chrome and pillow)
+	python3 tools/brand/brand_kit.py social --repo Kallsup-Sendspin-MusicAssistant --name "KALLSUP Sendspin" --tagline "Turn an IKEA KALLSUP into a battery-powered Music Assistant Wi-Fi speaker" --chip "ESPHome" --chip "ESP32-S3" --chip "MAX98357A" --chip "MIT" --icon docs/assets/brand/icon.svg
