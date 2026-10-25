@@ -4,7 +4,7 @@
 
 # 🔊 KALLSUP Sendspin for Music Assistant
 
-**An IKEA KALLSUP Bluetooth speaker turned into a battery-powered Music Assistant Wi-Fi speaker, with its case, speaker, battery, charging and buttons kept.**
+**Give your Music Assistant setup a battery-powered Wi-Fi speaker by swapping the guts of an IKEA KALLSUP: same case, driver, battery, charging and buttons.**
 
 ![ESPHome](https://img.shields.io/badge/ESPHome-2026.8%2B-000000?logo=esphome&logoColor=white)
 ![ESP32-S3](https://img.shields.io/badge/ESP32--S3-Zero-E7352C?logo=espressif&logoColor=white)
@@ -16,9 +16,20 @@
 
 ---
 
-The KALLSUP (model E2507) is a small IKEA speaker with a 750 mAh battery, a USB-C charger, one 4 Ω 3 W driver and no audio input other than Bluetooth. This build adds an ESP32-S3-Zero running [SendspinZero](https://github.com/RealDeco/SendspinZero)'s speaker firmware and an Adafruit MAX98357A amplifier. Music Assistant streams to it over [Sendspin](https://www.sendspin-audio.com); the stock board keeps holding the battery, charging it and, through its switched battery rail 🔍, switching the speaker on and off.
+## 🤔 Why it exists
 
-Bluetooth is given up on purpose. Keeping it means feeding audio into the stock amplifier's input, which needs a small 0603 solder joint and more reverse engineering; that route is written up in [Alternatives](docs/alternatives.md) for anyone who wants it.
+You run Music Assistant and want a small speaker for the kitchen, the garden table or the shelf, with no mains lead. The KALLSUP (model E2507) is a small IKEA speaker with a 750 mAh battery, a USB-C charger and a good case, but its only input is Bluetooth. This build replaces that path with an ESP32-S3-Zero running [SendspinZero](https://github.com/RealDeco/SendspinZero)'s speaker firmware and an Adafruit MAX98357A amplifier. Music Assistant streams to it over [Sendspin](https://www.sendspin-audio.com); the stock board keeps holding the battery, charging it and, through its switched battery rail 🔍, switching the speaker on and off.
+
+| | This build | The KALLSUP as sold | A ready-made Wi-Fi speaker | A bare ESP32 and amplifier in your own box |
+|---|---|---|---|---|
+| Plays from Music Assistant over Wi-Fi | Yes, as a Sendspin player | No, Bluetooth only | Depends on the model | Yes, with the same firmware |
+| Battery and USB-C charging | Kept from the KALLSUP | Yes | Depends on the model | You source and fit them |
+| Case and driver | The KALLSUP's own | Yes | Included | You source them |
+| Bluetooth | Given up | Yes | Depends on the model | Not included |
+| Loudness | About 1.7 W at 3.7 V, quieter than stock | About 3.5 W | Depends on the model | Depends on your amplifier and supply |
+| Soldering | Three joints on the board, plus the boards you add | None | None | Your own wiring |
+
+The main trade-off: you give up Bluetooth and some loudness, and you take on soldering inside the case. Keeping Bluetooth is possible with more reverse engineering; that route is written up in [Alternatives](docs/alternatives.md).
 
 > **Project status.** The firmware is validated by CI and the wiring is designed from continuity measurements on a real board. The complete build has not yet been run end to end. Three things are still to be measured on the board before soldering, and every doc marks them with 🔍: where the switched battery rail is, how the second button's pad behaves, and whether the speaker switches itself off on battery. See [Build guide](docs/build-guide.md#before-you-solder).
 
@@ -55,10 +66,10 @@ Deeper: [Wiring](docs/wiring.md) · [Board notes](docs/board-notes.md).
 |---|---|---|---|
 | 🧠 | [Waveshare ESP32-S3-Zero](https://www.waveshare.com/wiki/ESP32-S3-Zero) | The 2 MB of PSRAM is what makes Sendspin fit | £6 |
 | 🔈 | [Adafruit MAX98357A](https://www.adafruit.com/product/3006) | I2S in, speaker out; runs straight off a Li-ion cell, about 1.7 W at 3.7 V | £6 |
-| ⚡ | 5 V boost module, *optional* | Keeps the ESP32 in specification to the end of the charge | £2–5 |
+| ⚡ | 5 V boost module, *optional* | Keeps the ESP32 in specification to the end of the charge | £2 to £5 |
 | 🧵 | Thin silicone wire, heat-shrink, Kapton tape | Wiring and insulation inside the case | — |
 
-Waveshare rates the ESP32's `5V` pin at 3.7–6 V; from the cell, its regulator keeps 3.3 V down to about 3.4–3.5 V (calculated), which is most of the charge. For the rest, add a 5 V boost module on the `5V` pin. An LM2596 or other step-down-only module does not work here: it needs its input well above its output, and a Li-ion cell never is. The amplifier's 3 W rating is at 5 V; from the cell it makes about 1.7 W, less than the stock amplifier's boosted 3.5 W, so the converted speaker is quieter. More in [Hardware](docs/hardware.md).
+Waveshare rates the ESP32's `5V` pin at 3.7 to 6 V; from the cell, its regulator keeps 3.3 V down to about 3.4 to 3.5 V (calculated), which is most of the charge. For the rest, add a 5 V boost module on the `5V` pin. An LM2596 or other step-down-only module does not work here: it needs its input well above its output, and a Li-ion cell never is. The amplifier's 3 W rating is at 5 V; from the cell it makes about 1.7 W, less than the stock amplifier's boosted 3.5 W, so the converted speaker is quieter. More in [Hardware](docs/hardware.md).
 
 ---
 
@@ -72,7 +83,7 @@ Waveshare rates the ESP32's `5V` pin at 3.7–6 V; from the cell, its regulator 
 
 | From | To | Note |
 |---|---|---|
-| 🔍 Switched battery pad | MAX98357A `Vin` | Accepts 2.5–5.5 V, so no regulator |
+| 🔍 Switched battery pad | MAX98357A `Vin` | Accepts 2.5 to 5.5 V, so no regulator |
 | 🔍 Switched battery pad | ESP32 `5V`, directly **or** through a 5 V boost module | Never plug the ESP32's USB-C in once it is wired to the cell |
 | `GND1` | Every `GND` | One ground point |
 | 🔍 Second-button pad | ESP32 `GPIO1` | After measuring it |
@@ -87,19 +98,21 @@ On the KALLSUP board that is three joints: `GND1` and the button pad are large t
 
 ## 🚀 Quick Start
 
-1. **Bench test first.** Wire the ESP32 and the MAX98357A on the desk, flash the firmware, and play something from Music Assistant through any small speaker. See [Firmware](docs/firmware.md).
+**You need:** a KALLSUP, a Waveshare ESP32-S3-Zero, an Adafruit MAX98357A ([Parts](#-parts)), Home Assistant with Music Assistant, a USB-C data cable, a multimeter and a soldering iron. Install in 3 steps:
+
+1. **Bench test first.** Wire the ESP32 and the MAX98357A on the desk, flash the firmware, and play something from Music Assistant through any small speaker:
+
+   ```bash
+   cp firmware/secrets.yaml.example firmware/secrets.yaml   # Wi-Fi, hotspot password, API key
+   pip install esphome
+   esphome run firmware/kallsup-sendspin.yaml
+   ```
+
+   For the very first flash, hold the ESP32's **BOOT** button while plugging in the USB-C cable. After that, updates go over the air. Home Assistant discovers the speaker as an ESPHome device and asks for the `api_encryption_key`; Music Assistant then offers it as a Sendspin player.
 2. **Measure the board.** Three multimeter checks, no soldering; the auto-off check needs the speaker left on for at least 30 minutes: [Before you solder](docs/build-guide.md#before-you-solder).
 3. **Wire it in.** Three joints on the KALLSUP board, then the speaker onto the amplifier: [Build guide](docs/build-guide.md).
 
-Flashing, from a clone of this repository:
-
-```bash
-cp firmware/secrets.yaml.example firmware/secrets.yaml   # Wi-Fi, hotspot password, API key
-pip install esphome
-esphome run firmware/kallsup-sendspin.yaml
-```
-
-For the very first flash, hold the ESP32's **BOOT** button while plugging in the USB-C cable. After that, updates go over the air. Home Assistant discovers the speaker as an ESPHome device and asks for the `api_encryption_key`; Music Assistant then offers it as a Sendspin player.
+The full walkthrough is in [Setup](docs/setup.md). Short answers are in the [FAQ](docs/faq.md).
 
 ---
 
@@ -141,18 +154,19 @@ Kallsup-Sendspin-MusicAssistant/
 ├── firmware/
 │   ├── kallsup-sendspin.yaml   # 📟 ESPHome config: SendspinZero Speaker + KALLSUP button
 │   └── secrets.yaml.example
-├── docs/                       # 📚 build guide, wiring, board notes (index: docs/README.md)
-│   ├── assets/                 # 🖼️ diagrams, build mockups, teardown photos, annotated copies
+├── docs/                       # 📚 setup, FAQ, build guide, wiring, board notes (index: docs/README.md)
+│   ├── assets/                 # 🖼️ diagrams, mockups, teardown photos, social-preview.png
 │   └── archive/                # 🗄️ dated records, such as the design review
 ├── brand/                      # 🎨 icon.svg, drawn by tools/gen_brand.py
 ├── tools/
 │   ├── gen_diagram.py          # 🤖 draws docs/assets diagrams; --check in CI
 │   ├── gen_mockups.py          # 🧩 build mockups: bench, inside the KALLSUP, soldering; --check in CI
 │   ├── annotate_photos.py      # 🏷️ rings and labels on copies of the photos
-│   └── gen_brand.py            # 🎨 draws brand/icon.svg; --check in CI
+│   ├── gen_brand.py            # 🎨 draws brand/icon.svg; --check in CI
+│   └── gen_social.py           # 🖼️ draws docs/assets/social-preview.png
 ├── .github/
 │   ├── workflows/ci.yml        # ✅ ESPHome config validates, diagrams and mockups up to date
-│   ├── ISSUE_TEMPLATE/         # 🐛 bug report, feature request
+│   ├── ISSUE_TEMPLATE/         # 🐛 bug report, feature request, hardware report
 │   └── dependabot.yml
 ├── .gitignore                  # 🙈 secrets.yaml, .esphome/, editor files
 ├── AGENTS.md                   # 🤖 agent rules for this repo
@@ -160,9 +174,35 @@ Kallsup-Sendspin-MusicAssistant/
 ├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── LICENSE
+├── Makefile                    # ✅ make check runs what CI runs
 ├── README.md
-└── SECURITY.md
+├── SECURITY.md
+└── llms.txt                    # 🤖 the project on one plain-text page
 ```
+
+---
+
+## ✅ Supported and tested
+
+| | Item | Status |
+|---|---|---|
+| 📟 | ESPHome config | Validated by CI with the latest ESPHome on every push, pull request and weekly; also run locally with ESPHome 2026.10.0. Floor: 2026.8.0 |
+| 🔊 | KALLSUP E2507, board marked `V2.0` | Measured unpowered for continuity and by photo; the three 🔍 items are open |
+| 🧠 | ESP32-S3-Zero and MAX98357A | Pinout and power limits read from the manufacturers' documents. Not run on a bench by this repository's CI. Unverified until a build is reported |
+| 🔋 | Battery runs, loudness, run time | Unverified. Loudness figures are read from datasheet curves |
+| 🔁 | Other KALLSUP board revisions | Unknown. Reports welcome: [Contributing](CONTRIBUTING.md#reporting-a-kallsup-that-differs) |
+
+---
+
+## 📚 Docs
+
+| Doc | What it covers |
+|---|---|
+| [Setup](docs/setup.md) | Numbered walkthrough from parts to a playing speaker |
+| [FAQ](docs/faq.md) | Bluetooth, loudness, battery, parts, safety |
+| [How it works](docs/how-it-works.md) | Audio path, power, button, what is measured |
+| [Troubleshooting](docs/troubleshooting.md) | Fixes by symptom |
+| [All docs](docs/README.md) | Build guide, wiring, hardware, firmware, board notes, alternatives |
 
 ---
 
@@ -177,7 +217,7 @@ python3 tools/gen_mockups.py --check            # build mockups match theirs
 python3 tools/gen_brand.py --check              # and the icon
 ```
 
-CI runs all four on pushes to `main`, on pull requests and weekly. They prove the config is valid and the pictures are current; they cannot prove the wiring, which is why the build guide starts with a bench test.
+`make check` runs the same checks. CI runs all four on pushes to `main`, on pull requests and weekly. They prove the config is valid and the pictures are current; they cannot prove the wiring, which is why the build guide starts with a bench test.
 
 ---
 
@@ -211,7 +251,7 @@ Product names are their owners' trademarks. This project is not affiliated with 
 
 ## 🤝 Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Measurements from other KALLSUP units are the most useful contribution, especially the three 🔍 items.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Measurements from other KALLSUP units are the most useful contribution, especially the three 🔍 items. To report a board or build that differs, use the [hardware report](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/issues/new?template=hardware_report.md) and attach what [Contributing](CONTRIBUTING.md#reporting-a-kallsup-that-differs) lists.
 
 ---
 

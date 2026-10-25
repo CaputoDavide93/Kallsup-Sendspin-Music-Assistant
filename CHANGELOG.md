@@ -7,6 +7,11 @@ All notable changes to this project are recorded here. The format follows
 ## [Unreleased]
 
 ### Added
+- **Search and onboarding.** Why-it-exists section with a comparison table, a
+  3-step quick start with prerequisites, a supported and tested table,
+  `docs/setup.md`, `docs/faq.md`, `docs/how-it-works.md`, `llms.txt`, a hardware
+  report issue template, a `Makefile` with `make check`, and a 1280x640 social
+  preview drawn by `tools/gen_social.py`.
 - **Firmware.** ESPHome config built on SendspinZero Speaker, pinned to
   `0c7f82b`, with an encrypted API, OTA that requires the API key, Wi-Fi from
   `secrets.yaml`, and the KALLSUP's second button on `GPIO1` as play/pause,
