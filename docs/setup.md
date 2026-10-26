@@ -15,8 +15,8 @@ Items marked 🔍 are not yet measured on a board. The complete build has not be
 ## 1. Get the firmware ready
 
 ```bash
-git clone https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant.git
-cd Kallsup-Sendspin-MusicAssistant
+git clone https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant.git
+cd Kallsup-Sendspin-Music-Assistant
 cp firmware/secrets.yaml.example firmware/secrets.yaml
 ```
 

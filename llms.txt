@@ -15,16 +15,16 @@ Key facts:
 
 ## Docs
 
-- [README](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/README.md): why, comparison, quick start, parts, wiring
-- [Setup](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/setup.md): numbered walkthrough from parts to a playing speaker
-- [FAQ](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/faq.md): Bluetooth, loudness, battery, parts, safety
-- [Troubleshooting](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/troubleshooting.md): symptoms and fixes
-- [How it works](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/how-it-works.md): audio path, power, button
-- [Build guide](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/build-guide.md): bench test, three board checks, soldering, assembly
-- [Wiring](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/wiring.md): every connection, pad by pad
+- [README](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/README.md): why, comparison, quick start, parts, wiring
+- [Setup](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/setup.md): numbered walkthrough from parts to a playing speaker
+- [FAQ](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/faq.md): Bluetooth, loudness, battery, parts, safety
+- [Troubleshooting](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/troubleshooting.md): symptoms and fixes
+- [How it works](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/how-it-works.md): audio path, power, button
+- [Build guide](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/build-guide.md): bench test, three board checks, soldering, assembly
+- [Wiring](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/wiring.md): every connection, pad by pad
 
 ## Optional
 
-- [Board notes](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/board-notes.md): what is on the KALLSUP board, measured versus inferred
-- [Alternatives](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/alternatives.md): routes that keep Bluetooth
-- [Changelog](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/CHANGELOG.md)
+- [Board notes](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/board-notes.md): what is on the KALLSUP board, measured versus inferred
+- [Alternatives](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/docs/alternatives.md): routes that keep Bluetooth
+- [Changelog](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/blob/main/CHANGELOG.md)
