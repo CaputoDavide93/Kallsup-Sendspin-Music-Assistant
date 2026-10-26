@@ -10,7 +10,7 @@
 ![ESP32-S3](https://img.shields.io/badge/ESP32--S3-Zero-E7352C?logo=espressif&logoColor=white)
 ![Music Assistant](https://img.shields.io/badge/Music%20Assistant-Sendspin-18BCF2?logo=homeassistant&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-green)
-[![CI](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/actions/workflows/ci.yml/badge.svg)](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/actions/workflows/ci.yml)
+[![CI](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/actions/workflows/ci.yml/badge.svg)](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/actions/workflows/ci.yml)
 
 </div>
 
@@ -150,7 +150,7 @@ Every finding, with how it was established and what is still open: [Board notes]
 ## 📁 Repo structure
 
 ```text
-Kallsup-Sendspin-MusicAssistant/
+Kallsup-Sendspin-Music-Assistant/
 ├── firmware/
 │   ├── kallsup-sendspin.yaml   # 📟 ESPHome config: SendspinZero Speaker + KALLSUP button
 │   └── secrets.yaml.example
@@ -249,7 +249,7 @@ Product names are their owners' trademarks. This project is not affiliated with 
 
 ## 🤝 Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Measurements from other KALLSUP units are the most useful contribution, especially the three 🔍 items. To report a board or build that differs, use the [hardware report](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/issues/new?template=hardware_report.md) and attach what [Contributing](CONTRIBUTING.md#reporting-a-kallsup-that-differs) lists.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Measurements from other KALLSUP units are the most useful contribution, especially the three 🔍 items. To report a board or build that differs, use the [hardware report](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/issues/new?template=hardware_report.md) and attach what [Contributing](CONTRIBUTING.md#reporting-a-kallsup-that-differs) lists.
 
 ---
 

@@ -8,7 +8,7 @@ Measurements from other KALLSUP units, especially the three 🔍 items in the [B
 
 ## Reporting a KALLSUP that differs
 
-Use the [hardware report](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/issues/new?template=hardware_report.md) template. Attach:
+Use the [hardware report](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/issues/new?template=hardware_report.md) template. Attach:
 
 - the board revision printed on the front, and a photo of the front and back;
 - your multimeter readings for checks 1, 2 and 3 from the [Build guide](docs/build-guide.md#before-you-solder);

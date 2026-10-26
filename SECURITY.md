@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Report privately through
-[GitHub Security Advisories](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/security/advisories/new)
+[GitHub Security Advisories](https://github.com/CaputoDavide93/Kallsup-Sendspin-Music-Assistant/security/advisories/new)
 rather than a public issue. You should hear back within a week.
 
 ## What this project touches
