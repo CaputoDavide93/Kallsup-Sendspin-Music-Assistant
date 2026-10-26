@@ -38,4 +38,4 @@ jobs:
           python-version: "3.12"
       - run: python3 tools/gen_diagram.py --check
       - run: python3 tools/gen_mockups.py --check
-      - run: python3 tools/gen_brand.py --check
+      - run: pip install pillow && sh tools/brand/check-icon.sh

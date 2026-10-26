@@ -6,6 +6,17 @@ Thanks for looking. Small, well-argued changes land fastest.
 
 Measurements from other KALLSUP units, especially the three 🔍 items in the [Build guide](docs/build-guide.md#before-you-solder): the switched battery point, the second button's pad, and the auto-off behaviour on battery. Include the board revision printed on the front (`V2.0` on the unit this was built from) and how you measured.
 
+## Reporting a KALLSUP that differs
+
+Use the [hardware report](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/issues/new?template=hardware_report.md) template. Attach:
+
+- the board revision printed on the front, and a photo of the front and back;
+- your multimeter readings for checks 1, 2 and 3 from the [Build guide](docs/build-guide.md#before-you-solder);
+- for firmware problems, the ESPHome log from boot to the fault, and your ESPHome, Home Assistant and Music Assistant versions;
+- what you changed from the documented wiring, if anything.
+
+Do not paste `secrets.yaml`, your Wi-Fi name or your API key.
+
 ## Before you start
 
 Open an issue for anything beyond a fix, so we can agree on the shape first.
@@ -23,7 +34,7 @@ Keep SendspinZero as a pinned remote package; do not copy its YAML in. Bumping `
 
 ## Working on the diagrams and icon
 
-`tools/gen_diagram.py` draws `docs/assets/*-light.svg` and `*-dark.svg`; `tools/gen_mockups.py` draws the build mockups in `docs/assets/mockups/`; `tools/annotate_photos.py` draws the rings and labels on copies of the teardown photos into `docs/assets/annotated/`. `tools/gen_brand.py` draws `brand/icon.svg`. `tools/annotate_photos.py` needs `pip install pillow`. Edit the script, run it, commit the result; never edit the output by hand. CI runs the `--check` of `gen_diagram.py`, `gen_mockups.py` and `gen_brand.py`.
+`tools/gen_diagram.py` draws `docs/assets/*-light.svg` and `*-dark.svg`; `tools/gen_mockups.py` draws the build mockups in `docs/assets/mockups/`; `tools/annotate_photos.py` draws the rings and labels on copies of the teardown photos into `docs/assets/annotated/`. `tools/brand/brand_kit.py` draws `docs/assets/brand/icon.svg`. `tools/annotate_photos.py` needs `pip install pillow`. Edit the script, run it, commit the result; never edit the output by hand. CI runs the `--check` of `gen_diagram.py` and `gen_mockups.py`, plus `tools/brand/check-icon.sh` for the icon. `make social` draws `docs/assets/social-preview.png` with the same brand kit (needs `pip install pillow` and Google Chrome); GitHub takes that file by hand under Settings, Social preview. `make check` runs the same checks as CI.
 
 An annotation says what the docs say about that spot and nothing more: a pad a check has not settled is ringed amber as a check, never green as a place to solder.
 

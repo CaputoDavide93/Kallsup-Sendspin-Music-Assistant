@@ -1,6 +1,6 @@
 # 🔎 Design review, 30 September 2026
 
-An outside review of the wiring, the diagrams and whether the build can work, by Codex, then each point checked against primary sources. The docs were changed where a point held up. This file records what was found; the docs are the current state.
+An outside review of the wiring, the diagrams and whether the build can work, by an external reviewer, then each point checked against primary sources. The docs were changed where a point held up. This file records what was found; the docs are the current state.
 
 ## Checked and adopted
 

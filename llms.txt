@@ -1,0 +1,30 @@
+# KALLSUP Sendspin for Music Assistant
+
+> KALLSUP Sendspin is a free, open-source (MIT) DIY build guide and ESPHome firmware config that turns an IKEA KALLSUP Bluetooth speaker (model E2507) into a battery-powered Wi-Fi speaker for Music Assistant. An ESP32-S3-Zero running SendspinZero's speaker firmware and an Adafruit MAX98357A amplifier take over the audio; the KALLSUP keeps its case, 4 ohm driver, battery, USB-C charging and power button. Music Assistant streams to it over Sendspin, and Home Assistant adopts it as an ESPHome device.
+
+Key facts:
+
+- Status: the ESPHome config validates in CI (ESPHome 2026.8.0 or newer). The wiring is designed from continuity measurements on one KALLSUP board marked V2.0. The complete build has not been run end to end, so the hardware claims are unverified until a build is reported.
+- Three open items, marked with a magnifying glass in the docs: where the switched battery rail is on the board, how the second button's pad behaves, and whether the stock board switches itself off on battery.
+- Parts: Waveshare ESP32-S3-Zero (its 2 MB of PSRAM is what makes Sendspin fit), Adafruit MAX98357A breakout, optional 5 V boost module, thin wire. Three solder joints on the KALLSUP board.
+- Install: copy firmware/secrets.yaml.example to firmware/secrets.yaml, fill in Wi-Fi, a fallback hotspot password and an API key, then run `pip install esphome` and `esphome run firmware/kallsup-sendspin.yaml`. Hold BOOT while plugging in USB-C for the first flash.
+- Buttons: the second button is play/pause (one press), next track (two) and previous track (three). The power button stays with the stock board.
+- Trade-offs: Bluetooth is given up on purpose. The speaker is quieter than stock: about 1.7 W at 3.7 V against the stock amplifier's 3.5 W, read from datasheets.
+- Security: the config encrypts the ESPHome API, requires the same key for over-the-air updates and sets a hotspot password. While the fallback hotspot is up, its captive portal accepts a firmware upload without the key.
+- Independent project, not affiliated with IKEA. Audio firmware is SendspinZero by RealDeco (MIT), used unmodified as a pinned package.
+
+## Docs
+
+- [README](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/README.md): why, comparison, quick start, parts, wiring
+- [Setup](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/setup.md): numbered walkthrough from parts to a playing speaker
+- [FAQ](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/faq.md): Bluetooth, loudness, battery, parts, safety
+- [Troubleshooting](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/troubleshooting.md): symptoms and fixes
+- [How it works](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/how-it-works.md): audio path, power, button
+- [Build guide](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/build-guide.md): bench test, three board checks, soldering, assembly
+- [Wiring](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/wiring.md): every connection, pad by pad
+
+## Optional
+
+- [Board notes](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/board-notes.md): what is on the KALLSUP board, measured versus inferred
+- [Alternatives](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/docs/alternatives.md): routes that keep Bluetooth
+- [Changelog](https://github.com/CaputoDavide93/Kallsup-Sendspin-MusicAssistant/blob/main/CHANGELOG.md)
