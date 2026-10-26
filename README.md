@@ -167,9 +167,8 @@ Kallsup-Sendspin-Music-Assistant/
 │   ├── ISSUE_TEMPLATE/         # 🐛 bug report, feature request, hardware report
 │   └── dependabot.yml
 ├── .gitignore                  # 🙈 secrets.yaml, .esphome/, editor files
-├── AGENTS.md                   # 🤖 agent rules for this repo
+├── AGENTS.md                   # 🤖 index for anyone changing the repo: checks, layout, rules
 ├── CHANGELOG.md
-├── CLAUDE.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Makefile                    # ✅ make check runs what CI runs
