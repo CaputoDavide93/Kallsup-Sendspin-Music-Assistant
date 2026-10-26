@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: "0 6 * * 1"   # weekly: ESPHome releases can change what validates
 
+permissions:
+  contents: read
+
 jobs:
   firmware:
     name: ESPHome config validates
