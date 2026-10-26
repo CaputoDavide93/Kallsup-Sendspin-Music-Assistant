@@ -67,7 +67,7 @@ Deeper: [Wiring](docs/wiring.md) · [Board notes](docs/board-notes.md).
 | 🧠 | [Waveshare ESP32-S3-Zero](https://www.waveshare.com/wiki/ESP32-S3-Zero) | The 2 MB of PSRAM is what makes Sendspin fit | £6 |
 | 🔈 | [Adafruit MAX98357A](https://www.adafruit.com/product/3006) | I2S in, speaker out; runs straight off a Li-ion cell, about 1.7 W at 3.7 V | £6 |
 | ⚡ | 5 V boost module, *optional* | Keeps the ESP32 in specification to the end of the charge | £2 to £5 |
-| 🧵 | Thin silicone wire, heat-shrink, Kapton tape | Wiring and insulation inside the case | — |
+| 🧵 | Thin silicone wire, heat-shrink, Kapton tape | Wiring and insulation inside the case | Small |
 
 Waveshare rates the ESP32's `5V` pin at 3.7 to 6 V; from the cell, its regulator keeps 3.3 V down to about 3.4 to 3.5 V (calculated), which is most of the charge. For the rest, add a 5 V boost module on the `5V` pin. An LM2596 or other step-down-only module does not work here: it needs its input well above its output, and a Li-ion cell never is. The amplifier's 3 W rating is at 5 V; from the cell it makes about 1.7 W, less than the stock amplifier's boosted 3.5 W, so the converted speaker is quieter. More in [Hardware](docs/hardware.md).
 
